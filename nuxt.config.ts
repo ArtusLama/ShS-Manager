@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
     modules: [
         "@nuxtjs/tailwindcss",
-        "@nuxtjs/i18n"
+        "@nuxtjs/i18n",
+        "@pinia/nuxt"
     ],
     i18n: {
         strategy: "prefix_except_default",

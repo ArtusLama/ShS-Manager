@@ -1,6 +1,9 @@
 <template>
     <div class="grid place-items-center h-screen">
-        <HelloWorld />
+        <div class="flex flex-col items-center gap-4">
+            <HelloWorld />
+            <Counter />
+        </div>
     </div>
 </template>
 
