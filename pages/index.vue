@@ -1,5 +1,5 @@
 <template>
-    <div class="grid place-items-center h-screen">
+    <div class="grid place-items-center h-[100dvh]">
         <div class="flex flex-col items-center gap-4">
             <HelloWorld />
             <Counter />
