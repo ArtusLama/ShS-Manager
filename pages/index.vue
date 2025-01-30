@@ -1,9 +1,12 @@
 <template>
-    <div class="grid place-items-center h-[100dvh]">
+    <div class="grid place-items-center">
         <div class="flex flex-col items-center gap-4">
             <HelloWorld />
             <Counter />
         </div>
+        <NuxtLink to="/design">
+            Design System
+        </NuxtLink>
     </div>
 </template>
 

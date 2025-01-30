@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     modules: [
+        "@nuxtjs/html-validator",
         "@vite-pwa/nuxt",
         "@nuxtjs/tailwindcss",
+        "@nuxtjs/color-mode",
+        "shadcn-nuxt",
         "@nuxtjs/i18n",
         "@pinia/nuxt",
         "pinia-plugin-persistedstate/nuxt"
