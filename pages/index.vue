@@ -1,23 +1,10 @@
 <template>
-    <div class="grid place-items-center">
-        <div class="flex flex-col items-center gap-4">
-            <HelloWorld />
-            <Counter />
-        </div>
-        <NuxtLink to="/design">
-            Design System
+    <div class="flex flex-col items-center justify-center gap-5 mt-20">
+        <NuxtLink to="/skeleton-index">
+            Skeleton Index
+        </NuxtLink>
+        <NuxtLink to="/index-better">
+            Skeleton Better
         </NuxtLink>
     </div>
 </template>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-</style>
