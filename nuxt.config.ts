@@ -16,7 +16,9 @@ export default defineNuxtConfig({
             {
                 name: "English",
                 code: "en",
-                file: "en.json"
+                language: "en-*",
+                file: "en.json",
+                isCatchallLocale: true
             }
         ],
         experimental: {
