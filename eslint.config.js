@@ -38,5 +38,7 @@ export default antfu({
         "style/comma-dangle": "off",
         "curly": ["error", "all"],
         "node/prefer-global/process": ["error", "always"],
+        "vue/brace-style": ["error", "1tbs", { allowSingleLine: true }],
+        "style/brace-style": ["error", "1tbs", { allowSingleLine: true }]
     },
 })

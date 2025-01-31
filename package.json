@@ -24,6 +24,7 @@
         "@vite-pwa/nuxt": "^0.10.6",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "dayjs-nuxt": "^2.1.11",
         "lucide-vue-next": "^0.474.0",
         "nuxt": "^3.15.3",
         "pinia": "^2.3.1",
@@ -35,6 +36,7 @@
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.26.0",
+        "@gabortorma/nuxt-dayjs-i18n": "^5.2.18",
         "@nuxtjs/i18n": "^8.4.0",
         "@nuxtjs/tailwindcss": "^6.11.4",
         "@types/node": "^22.7.8",

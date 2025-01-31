@@ -6,9 +6,10 @@ export default defineNuxtConfig({
         "@nuxtjs/tailwindcss",
         "@nuxtjs/color-mode",
         "shadcn-nuxt",
-        "@nuxtjs/i18n",
         "@pinia/nuxt",
-        "pinia-plugin-persistedstate/nuxt"
+        "pinia-plugin-persistedstate/nuxt",
+        "@nuxtjs/i18n",
+        "dayjs-nuxt",
     ],
     i18n: {
         strategy: "prefix_except_default",
@@ -27,6 +28,9 @@ export default defineNuxtConfig({
         experimental: {
             localeDetector: "./localeDetector.ts"
         }
+    },
+    dayjs: {
+        plugins: ["relativeTime", "isBetween", "localizedFormat", "isTomorrow"],
     },
     tailwindcss: {
         viewer: false

@@ -12,7 +12,7 @@ import { ArrowRight, Calendar, CircleDollarSign, Clock, CornerDownRight, MoveDia
         </header>
         <main class="mt-4 grid gap-8">
             <section>
-                <div class="relative border rounded-lg px-4 py-2 overflow-hidden bg-background shadow-sm">
+                <div class="relative rounded px-4 py-2 overflow-hidden bg-card shadow-sm">
                     <h4>Mathe - Kurs Name</h4>
                     <p class="text-muted-foreground leading-5">
                         Beschreibung des Kurses Beschreibung des Kurses Beschreibung des Kurses
@@ -38,7 +38,7 @@ import { ArrowRight, Calendar, CircleDollarSign, Clock, CornerDownRight, MoveDia
             <section class="">
                 <h3>Finance:</h3>
                 <div class="grid grid-cols-2 gap-4 mt-2">
-                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm px-4 py-4">
+                    <div class="rounded-lg bg-card text-card-foreground shadow-sm px-4 py-4">
                         <div class="flex items-center gap-2 text-muted-foreground">
                             <CircleDollarSign :size="20" :stroke-width="1.75" />
                             <p class="text-lg">
@@ -51,7 +51,7 @@ import { ArrowRight, Calendar, CircleDollarSign, Clock, CornerDownRight, MoveDia
                             <small>12,41€/week</small>
                         </div>
                     </div>
-                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm px-4 py-4">
+                    <div class="rounded-lg bg-card text-card-foreground shadow-sm px-4 py-4">
                         <div class="flex items-center gap-2 text-muted-foreground">
                             <CircleDollarSign :size="20" :stroke-width="1.75" />
                             <p class="text-lg">

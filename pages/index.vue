@@ -6,5 +6,8 @@
         <NuxtLink to="/index-better">
             Skeleton Better
         </NuxtLink>
+        <NuxtLink to="/index-shad">
+            Skeleton Shad
+        </NuxtLink>
     </div>
 </template>
