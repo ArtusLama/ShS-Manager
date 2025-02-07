@@ -156,3 +156,9 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer utilities {
+    .nav-link-active {
+        @apply scale-110 text-foreground;
+    }
+}
