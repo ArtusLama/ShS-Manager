@@ -12,14 +12,12 @@
     // Enable the ESlint flat config support
     "eslint.experimental.useFlatConfig": true,
 
-    // Disable the default formatter, use eslint instead
     "prettier.enable": true,
     "editor.formatOnSave": false,
 
     // Auto fix
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "explicit"
+        "source.fixAll.eslint": "explicit"
     },
 
     // Silent the stylistic rules in you IDE, but still auto fix them
@@ -56,5 +54,7 @@
         "locales"
     ],
     "i18n-ally.keystyle": "nested",
-    "i18n-ally.sourceLanguage": "en"
+    "i18n-ally.sourceLanguage": "en",
+
+    "prettier.semi": false
 }
