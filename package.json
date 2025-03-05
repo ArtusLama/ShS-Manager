@@ -15,11 +15,13 @@
         "dev:host": "nuxt dev --host",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "postinstall": "nuxt prepare",
+        "supabase:gentypes": "npx supabase login && npx supabase gen types typescript --project-id khitxijfarmcddhstjms > types/database.types.ts"
     },
     "dependencies": {
         "@nuxtjs/color-mode": "^3.5.2",
         "@nuxtjs/html-validator": "^1.8.2",
+        "@nuxtjs/supabase": "^1.4.6",
         "@pinia/nuxt": "^0.9.0",
         "@vite-pwa/nuxt": "^0.10.6",
         "class-variance-authority": "^0.7.1",
@@ -27,12 +29,14 @@
         "dayjs-nuxt": "^2.1.11",
         "lucide-vue-next": "^0.474.0",
         "nuxt": "^3.15.3",
+        "nuxt-zod-i18n": "^1.11.5",
         "pinia": "^2.3.1",
         "pinia-plugin-persistedstate": "^4.2.0",
         "radix-vue": "^1.9.13",
         "shadcn-nuxt": "^0.11.3",
         "tailwind-merge": "^2.6.0",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "zod": "^3.24.2"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.26.0",

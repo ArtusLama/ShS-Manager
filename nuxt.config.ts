@@ -8,9 +8,14 @@ export default defineNuxtConfig({
         "shadcn-nuxt",
         "@pinia/nuxt",
         "pinia-plugin-persistedstate/nuxt",
-        "@nuxtjs/i18n",
+        "nuxt-zod-i18n",
         "dayjs-nuxt",
+        "@nuxtjs/i18n",
+        "@nuxtjs/supabase"
     ],
+    imports: {
+        dirs: ["schema"]
+    },
     i18n: {
         strategy: "prefix_except_default",
         lazy: true,
@@ -30,7 +35,10 @@ export default defineNuxtConfig({
         }
     },
     dayjs: {
-        plugins: ["relativeTime", "isBetween", "localizedFormat", "isTomorrow"],
+        plugins: ["relativeTime", "isBetween", "localizedFormat", "isTomorrow", "customParseFormat"],
+    },
+    supabase: {
+        redirect: false
     },
     tailwindcss: {
         viewer: false

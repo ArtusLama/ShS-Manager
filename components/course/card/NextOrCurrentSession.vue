@@ -1,45 +1,22 @@
 <script lang="ts" setup>
 import type { Dayjs } from "dayjs"
-import { Calendar, Clock } from "lucide-vue-next"
-import { ref } from "vue"
+import { LucideCalendar, LucideClock } from "lucide-vue-next"
+
+const props = defineProps<{
+    courseSession: CourseSession
+}>()
 
 const dayjs = useDayjs()
-
-interface c {
-    subject: string
-    name: string
-    description: string
-    startDate: Date
-    endDate: Date
-}
-
-function getDates() {
-    const now = new Date()
-    const startOffset = 1000 * 60 * 60 * -0.01
-    const duration = 1000 * 60 * 2
-    const start = new Date(now.getTime() + startOffset)
-    start.setSeconds(0, 0)
-    const end = new Date(start.getTime() + duration)
-    return {
-        startDate: start,
-        endDate: end
-    }
-}
-
-const course: c = {
-    subject: "Mathe",
-    name: "Kurs Name",
-    description: "Beschreibung des Kurses Beschreibung des Kurses Beschreibung des Kurses",
-    startDate: getDates().startDate,
-    endDate: getDates().endDate
-}
 
 const dateDisplay = ref("...")
 const timeLeftPercentage: Ref<undefined | number> = ref()
 
-const courseTime = computed(() => {
-    const start = dayjs(course.startDate).format("HH:mm")
-    const end = dayjs(course.endDate).format("HH:mm")
+const startTime = computed(() => dayjs(props.courseSession.start_date))
+const endTime = computed(() => dayjs(props.courseSession.end_date))
+
+const courseTimeString = computed(() => {
+    const start = startTime.value.format("HH:mm")
+    const end = endTime.value.format("HH:mm")
     return `${start} - ${end}`
 })
 
@@ -51,13 +28,11 @@ function updateTimeLeft(start: Dayjs, end: Dayjs) {
 }
 
 function updateTime() {
-    dateDisplay.value = getCourseStatusText(course.startDate, course.endDate)
+    dateDisplay.value = getCourseStatusText(startTime.value, endTime.value)
 }
 
-function getCourseStatusText(startDate: Date, endDate: Date) {
+function getCourseStatusText(start: Dayjs, end: Dayjs) {
     const now = dayjs()
-    const start = dayjs(startDate)
-    const end = dayjs(endDate)
 
     if (now.isBetween(start, end)) {
         updateTimeLeft(start, end)
@@ -79,6 +54,7 @@ function getCourseStatusText(startDate: Date, endDate: Date) {
     return start.format("LL")
 }
 
+updateTime()
 onMounted(() => {
     const syncTime = 15
     let interval: NodeJS.Timeout
@@ -91,14 +67,28 @@ onMounted(() => {
 
     onBeforeUnmount(() => clearInterval(interval))
 })
+
+const { data: course, status: courseStatus } = await useCourses().getById(props.courseSession.course)
 </script>
 
 <template>
     <div>
-        <Card>
-            <CardHeader>
+        <Card class="shadow-lg">
+            <CardHeader v-if="courseStatus === 'pending'">
+                <Skeleton class="h-7 w-64" />
+                <Skeleton class="h-4 w-44" />
+            </CardHeader>
+            <CardHeader v-if="courseStatus === 'error'">
                 <CardTitle>
-                    <CourseSubjectBadge :subject="course.subject" />
+                    Unknown Course
+                </CardTitle>
+                <CardDescription>
+                    Unknown Course
+                </CardDescription>
+            </CardHeader>
+            <CardHeader v-if="courseStatus === 'success' && course">
+                <CardTitle>
+                    <CourseSubjectBadge :subject-id="course.subject" />
                     {{ course.name }}
                 </CardTitle>
                 <CardDescription>
@@ -108,15 +98,15 @@ onMounted(() => {
             <CardContent>
                 <div class="flex gap-6 items-center">
                     <div class="flex items-center gap-2">
-                        <Calendar :size="18" />
+                        <LucideCalendar :size="18" />
                         <p class="leading-4">
                             {{ dateDisplay }}
                         </p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <Clock :size="18" />
+                        <LucideClock :size="18" />
                         <p class="leading-4">
-                            {{ courseTime }}
+                            {{ courseTimeString }}
                         </p>
                     </div>
                 </div>
