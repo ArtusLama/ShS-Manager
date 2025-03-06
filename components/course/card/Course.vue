@@ -9,7 +9,7 @@ defineProps<{
         <Card :class="{ 'bg-muted': course.paused }">
             <CardHeader>
                 <CardTitle class="w-full flex justify-between items-center">
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 items-center">
                         <CourseSubjectBadge :subject-id="course.subject" />
                         {{ course.name }}
                     </div>
