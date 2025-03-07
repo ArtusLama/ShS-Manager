@@ -16,9 +16,7 @@
             </TabsList>
 
             <TabsContent value="base">
-                <div class="overflow-y-scroll">
-                    <CourseList />
-                </div>
+                <CourseList />
             </TabsContent>
             <TabsContent value="old">
                 <CourseListRecent />

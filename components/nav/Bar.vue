@@ -3,7 +3,7 @@ import { CircleDollarSign, LayoutList, LucideHome, LucideSettings } from "lucide
 </script>
 
 <template>
-    <div class="fixed left-0 bottom-0 right-0 z-40">
+    <div class="fixed left-0 bottom-0 right-0 z-40 touch-none">
         <div class="flex items-center justify-evenly bg-card border-t py-2">
             <NavLink to="/index-shad">
                 <LucideHome :size="32" />
