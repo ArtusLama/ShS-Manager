@@ -3,6 +3,8 @@ const dayjs = useDayjs()
 const { data: nextCourseSessions, refresh: reloadData } = await useCourseSessions().getAllSessionsByUser("e8d4e913-6846-47d4-9765-c7a1fc5fc9a1", "future")
 const sortedSessions = computed(() => [...nextCourseSessions.value].sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date))))
 const nextCourseSession = computed(() => sortedSessions.value[0])
+
+// TODO: in supabase what if schedule is changed? we need to update the course_session. Maybe add ref to schedule in course_session and trigger update when schedule is changed in supabase
 </script>
 
 <template>
