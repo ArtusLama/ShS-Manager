@@ -56,7 +56,8 @@ function getCourseStatusText(start: Dayjs, end: Dayjs) {
 
 updateTime()
 onMounted(() => {
-    const syncTime = 15
+    // TODO: not completely accurate
+    const syncTime = 10
     let interval: NodeJS.Timeout
 
     updateTime()

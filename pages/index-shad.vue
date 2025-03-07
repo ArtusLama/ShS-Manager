@@ -8,7 +8,8 @@ const nextCourseSession = computed(() => nextCourseSessions.value[0])
         <TextHeader title="Dashboard" subtitle="Welcome back, Arthur!" />
         <main class="grid gap-8">
             <section>
-                <CourseCardNextOrCurrentSession :course-session="nextCourseSession" />
+                <CourseCardNextOrCurrentSession v-if="nextCourseSession !== undefined" :course-session="nextCourseSession" />
+                <CourseCardNoNextSession v-else />
             </section>
             <section>
                 <h3>Finance:</h3>

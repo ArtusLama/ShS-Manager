@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
     <div>
         <TextHeader title="Courses" />
@@ -16,10 +12,25 @@
             </TabsList>
 
             <TabsContent value="base">
-                <CourseList />
+                <Suspense>
+                    <CourseList />
+                    <template #fallback>
+                        <div class="grid grid-cols-1 gap-4">
+                            <Skeleton v-for="i in 3" :key="i" class="w-full h-32 rounded-3xl" />
+                        </div>
+                    </template>
+                </Suspense>
             </TabsContent>
             <TabsContent value="old">
-                <CourseListRecent />
+                <Suspense>
+                    <CourseListRecent />
+
+                    <template #fallback>
+                        <div class="grid grid-cols-1 gap-4">
+                            <Skeleton v-for="i in 12" :key="i" class="w-full h-32 rounded-3xl" />
+                        </div>
+                    </template>
+                </Suspense>
             </TabsContent>
         </Tabs>
     </div>
