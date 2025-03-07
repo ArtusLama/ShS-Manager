@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+const dayjs = useDayjs()
 const { data: nextCourseSessions } = await useCourseSessions().getAllSessionsByUser("e8d4e913-6846-47d4-9765-c7a1fc5fc9a1", "future")
-const nextCourseSession = computed(() => nextCourseSessions.value[0])
+const sortedSessions = computed(() => [...nextCourseSessions.value].sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date))))
+const nextCourseSession = computed(() => sortedSessions.value[0])
 </script>
 
 <template>

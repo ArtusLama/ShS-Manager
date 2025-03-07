@@ -34,7 +34,7 @@ export async function getAllSessionsByUser(userId: string, filter: "past" | "fut
             query = query.lte("start_date", new Date().toISOString())
             break
         case "future":
-            query = query.gte("start_date", new Date().toISOString())
+            query = query.gte("end_date", new Date().toISOString())
             break
         case "all":
             break
