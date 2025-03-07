@@ -41,7 +41,7 @@ function getCourseStatusText(start: Dayjs, end: Dayjs) {
     } else {
         timeLeftPercentage.value = undefined
         if (now.isAfter(end)) {
-            return "-"
+            return "loading..."
         } else if (now.isSame(start, "day")) {
             return `Starts in ${start.fromNow(true)}`
         } else if (start.isTomorrow()) {
@@ -97,7 +97,7 @@ const { data: course, status: courseStatus } = await useCourses().getById(props.
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div class="flex gap-6 items-center">
+                <div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
                     <div class="flex items-center gap-2">
                         <LucideCalendar :size="18" />
                         <p class="leading-4">
