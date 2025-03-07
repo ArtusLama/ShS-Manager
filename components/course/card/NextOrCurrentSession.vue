@@ -6,6 +6,10 @@ const props = defineProps<{
     courseSession: CourseSession
 }>()
 
+const emit = defineEmits<{
+    sessionOver: []
+}>()
+
 const dayjs = useDayjs()
 
 const dateDisplay = ref("...")
@@ -31,16 +35,18 @@ function updateTime() {
     dateDisplay.value = getCourseStatusText(startTime.value, endTime.value)
 }
 
+// TODO: this is sometimes executed to late or is behind since it displays "loading..." when the the other information is already displayed
 function getCourseStatusText(start: Dayjs, end: Dayjs) {
     const now = dayjs()
 
     if (now.isBetween(start, end)) {
         updateTimeLeft(start, end)
-        const left = end.diff(now, "minutes")
+        const left = end.diff(now, "minutes") + 1
         return `${left} ${left === 1 ? "minute" : "minutes"} left`
     } else {
         timeLeftPercentage.value = undefined
         if (now.isAfter(end)) {
+            emit("sessionOver")
             return "loading..."
         } else if (now.isSame(start, "day")) {
             return `Starts in ${start.fromNow(true)}`

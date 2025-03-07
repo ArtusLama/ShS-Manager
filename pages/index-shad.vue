@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const dayjs = useDayjs()
-const { data: nextCourseSessions } = await useCourseSessions().getAllSessionsByUser("e8d4e913-6846-47d4-9765-c7a1fc5fc9a1", "future")
+const { data: nextCourseSessions, refresh: reloadData } = await useCourseSessions().getAllSessionsByUser("e8d4e913-6846-47d4-9765-c7a1fc5fc9a1", "future")
 const sortedSessions = computed(() => [...nextCourseSessions.value].sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date))))
 const nextCourseSession = computed(() => sortedSessions.value[0])
 </script>
@@ -10,7 +10,7 @@ const nextCourseSession = computed(() => sortedSessions.value[0])
         <TextHeader title="Dashboard" subtitle="Welcome back, Arthur!" />
         <main class="grid gap-8">
             <section>
-                <CourseCardNextOrCurrentSession v-if="nextCourseSession !== undefined" :course-session="nextCourseSession" />
+                <CourseCardNextOrCurrentSession v-if="nextCourseSession !== undefined" :course-session="nextCourseSession" @session-over="reloadData" />
                 <CourseCardNoNextSession v-else />
             </section>
             <section>
