@@ -27,7 +27,7 @@ export async function getAllSessionsByUser(userId: string, filter: "past" | "fut
             )
         `)
         .eq("course.teacher", userId)
-        .order("start_date", { ascending: true })
+        .order("start_date", { ascending: false })
 
     switch (filter) {
         case "past":
