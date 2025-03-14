@@ -6,6 +6,7 @@ const sortedSessions = computed(() => [...courseSessions.value].sort((a, b) => -
 </script>
 
 <template>
+    <!-- TODO: Add labeld for last week, last month, ... and make it collapsable  -->
     <div class="grid grid-cols-1 gap-4">
         <CourseCardSession v-for="session of sortedSessions" :key="session.id" :course-session="session" />
     </div>
